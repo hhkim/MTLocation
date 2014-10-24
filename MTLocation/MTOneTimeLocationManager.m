@@ -46,6 +46,10 @@
     self.completion = completion;
     self.error = error;
     
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+
     [self.locationManager startUpdatingLocation];
 }
 

@@ -232,6 +232,10 @@
             // if we are currently searching, start updating location
         case MTUserTrackingModeSearching:
             //NSLog(@"Start updating location");
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+            
             [self.locationManager startUpdatingLocation];
             [self.locationManager stopUpdatingHeading];
             break;
@@ -239,6 +243,10 @@
             // if we are already receiving updates
         case MTUserTrackingModeFollow:
             //NSLog(@"Start updating location");
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+
             [self.locationManager startUpdatingLocation];
             [self.locationManager stopUpdatingHeading];
             break;
@@ -246,6 +254,10 @@
             // if we are currently receiving heading updates, start updating heading
         case MTUserTrackingModeFollowWithHeading:
             //NSLog(@"start updating heading");
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+
             [self.locationManager startUpdatingLocation];
             [self.locationManager startUpdatingHeading];
             break;
